@@ -1,8 +1,10 @@
 'use strict';
 
-let player;
+let playerScore = 0;
+let computerScore = 0;
+let round = 0;
 let computer;
-let result;
+let playerSelection;
 
 function computerPlay() {
     const randChoice = Math.floor(Math.random() * 3) + 1;
@@ -19,17 +21,20 @@ function computerPlay() {
             break;
     }
     console.log(`computer picked ${computer}`);
+    return computer;
 }
-
-computerPlay()
 
 function playRound(playerSelection, computerSelection) {
     playerSelection = prompt('Choose between Rock, Paper or Scissors').toLowerCase();
-    computerSelection = computerPlay;
+    computerSelection = computer;
 
-    if (playerSelection === 'rock' && computerSelection === 'rock') {
-        console.log(`You picked ${playerSelection} and computer picked ${computerSelection}. This round was a draw.`);
+    if (playerSelection == computerSelection) {
+        console.log(`Computer also picked ${computerSelection} round draw, go again!`);
+        playerSelection = prompt(`Computer also picked ${computerSelection} round draw, go again!`);
+    } else {
+        console.log('test failed');
     }
-}
+};
 
+computerPlay();
 playRound();
