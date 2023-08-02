@@ -1,10 +1,7 @@
 'use strict';
 
-let playerScore = 0;
-let computerScore = 0;
-let round = 0;
+let result;
 let computer;
-let playerSelection;
 
 function computerPlay() {
     const randChoice = Math.floor(Math.random() * 3) + 1;
@@ -20,21 +17,48 @@ function computerPlay() {
             computer = 'scissors';
             break;
     }
-    console.log(`computer picked ${computer}`);
     return computer;
 }
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = prompt('Choose between Rock, Paper or Scissors').toLowerCase();
-    computerSelection = computer;
+    playerSelection = playerSelection.toLowerCase();
 
-    if (playerSelection == computerSelection) {
-        console.log(`Computer also picked ${computerSelection} round draw, go again!`);
-        playerSelection = prompt(`Computer also picked ${computerSelection} round draw, go again!`);
-    } else {
-        console.log('test failed');
+    if (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
+        return "Invalid choice! Please choose between 'rock', 'paper', or 'scissors'!";
     }
+
+    if (playerSelection === 'rock' && computerSelection === 'scissors' ||
+        playerSelection === "paper" && computerSelection === "rock" ||
+        playerSelection === "scissors" && computerSelection === "paper") {
+        return `You win! computer selected ${computerSelection} and ${playerSelection} beats ${computerSelection}!`;
+    } else if (playerSelection === computerSelection) {
+        return `It's a round draw! computer also chose ${computerSelection}`;
+    } else {
+        return `You lost this round! computer picked ${computerSelection} and ${computerSelection} beats ${playerSelection} :(`;
+    };
+
+}
+
+const playerSelection = 'rock';
+const computerSelection = computerPlay();
+console.log(playRound(playerSelection, computerSelection));
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let round = 1; round <= 5; round++) {
+        const playerSelection = prompt(`Round: ${round}, Choose between rock, paper or scissors.`);
+        const computerSelection = computerPlay();
+        result = playRound(playerSelection, computerSelection);
+
+        if (result.includes('win')) {
+            playerScore++;
+        } else if (result.includes('lost')) {
+            computerScore++;
+        }
+        console.log(result);
+    };
 };
 
-computerPlay();
-playRound();
+game();
