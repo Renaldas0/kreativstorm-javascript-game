@@ -31,25 +31,33 @@ function round(randomChoice, playerSelection) {
     };
 };
 
+function playerPlay(round){
+    do {
+        playerSelection =
+            window.prompt("Welcome to Rock, Paper, Scissors." +
+                "\nStrategy will take you far here, choose wisely." +
+                "\nbetween: Rock, Paper or Scissors" +
+                "\nYou have 5 rounds to play, Good Luck." +
+                "\nLet's start" + "\nRound:" + (round + 1) +
+                "\n\nNote: If the round doesn't change it means you entered a wrong value, make sure you enter one of the 3 mentioned" +
+                "\nPress cancel to exit the game");
+        playerSelection = playerSelection.toLowerCase().trim();
+    } while (!(playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
+}
+
+function EndGame(round){
+    if (round == 4) {
+        return computerScore > playerScore ? window.alert(`Computer score: ${computerScore} \n Player score: ${playerScore} \n Draws: ${draws} \n You lose the game 😞 \n reload the page to play again!`)
+            : computerScore == playerScore ? window.alert(`Computer score: ${computerScore} \n Player score: ${playerScore} \n Draws: ${draws} \n It seems that the game ended in a tie. Reload the page to play again!`)
+                : window.alert(`Computer score: ${computerScore} \n Player score: ${playerScore} \n Draws: "${draws} \n You win the game 🥳 pro!. Reload the page to play again!`);
+    };
+}
 function play() {
     for (let i = 0; i < 5; i++) {
         randomChoice = computerPlay();
-        do {
-            playerSelection = 
-            window.prompt("Welcome to the thrilling world of \n Rock, Scissors, Paper (Choose one)" +
-                          " \n where strategy, wit, and a little bit of luck collide in an exhilarating battle of choices!" +
-                          " \nYou have 5 rounds to play, choose wisely.\n Let's start \n round:" +
-                          (i + 1) +
-                          " \n\n Note: If the round doesn't change it means you entered a wrong value, make sure you enter one of the 3 mentioned"+
-                          " \n Press cancel to exit the game");
-            playerSelection = playerSelection.trim().toLowerCase();
-        } while (!(playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
+        playerPlay(i);
         round(randomChoice, playerSelection);
-        if (i == 4) {
-            return computerScore > playerScore ? window.alert(`Computer score: ${computerScore} \n Player score: ${playerScore} \n Draws: ${draws} \n You lose the game 😞 \n reload the page to play again!`)
-                : computerScore == playerScore ? window.alert(`Computer score: ${computerScore} \n Player score: ${playerScore} \n Draws: ${draws} \n It seems that the game ended in a tie. Reload the page to play again!`)
-                    : window.alert(`Computer score: ${computerScore} \n Player score: ${playerScore} \n Draws: "${draws} \n You win the game 🥳 pro!. Reload the page to play again!`);
-        };
+        EndGame(i);
     };
 };
 
