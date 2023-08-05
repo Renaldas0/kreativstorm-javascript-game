@@ -37,7 +37,7 @@ function play() {
         do {
             playerSelection = 
             window.prompt("Welcome to the thrilling world of"+ 
-            " \nRock, Scissors, Paper" + 
+            " \nRock, Scissors, Paper (Choose one)" + 
             " \nwhere strategy, wit, and a little bit of luck collide in an exhilarating battle of choices!"+
             "\nYou have 5 rounds to play, choose wisely. "
             +" \nLet's start" + "\nround:" + (i + 1)
