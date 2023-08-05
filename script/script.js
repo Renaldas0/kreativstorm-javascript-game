@@ -36,9 +36,12 @@ function play() {
         randomChoice = computerPlay();
         do {
             playerSelection = 
-            window.prompt("Welcome to the thrilling world of \n Rock, Scissors, Paper (Choose one) \n where strategy, wit, and a little bit of luck collide in an exhilarating battle of choices!\nYou have 5 rounds to play, choose wisely.\n Let's start \n round:" 
-            + (i + 1) 
-            + " \n\n Note: If the round doesn't change it means you entered a wrong value, make sure you enter one of the 3 mentioned \n Press cancel to exit the game");
+            window.prompt("Welcome to the thrilling world of \n Rock, Scissors, Paper (Choose one)" +
+                          " \n where strategy, wit, and a little bit of luck collide in an exhilarating battle of choices!" +
+                          " \nYou have 5 rounds to play, choose wisely.\n Let's start \n round:" +
+                          (i + 1) +
+                          " \n\n Note: If the round doesn't change it means you entered a wrong value, make sure you enter one of the 3 mentioned"+
+                          " \n Press cancel to exit the game");
             playerSelection = playerSelection.trim().toLowerCase();
         } while (!(playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
         round(randomChoice, playerSelection);
