@@ -42,7 +42,7 @@ function play() {
             "\nYou have 5 rounds to play, choose wisely. "
             +" \nLet's start" + "\nround:" + (i + 1)
             + " \n\n Note: If the round doesn't change it means you entered a wrong value, make sure you enter one of the 3 mentioned");
-            playerSelection = playerSelection.toLowerCase();
+            playerSelection = playerSelection.toLowerCase().trim();
         } while (!(playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors"))
         round(randomChoice, playerSelection);
         if (i == 4) {
