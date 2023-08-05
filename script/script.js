@@ -30,6 +30,8 @@ function round(randomChoice, playerSelection) {
         case "scissorsscissors":
             window.alert(`Computer chose: ${randomChoice}\n You chose: ${playerSelection}\n Round Draw`);
             return draws += 1;
+        default:
+            return;
     };
 };
 
