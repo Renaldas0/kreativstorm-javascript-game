@@ -42,13 +42,10 @@ function playerPlay(round){
                 "\nbetween: Rock, Paper or Scissors" +
                 "\nYou have 5 rounds to play, Good Luck." +
                 "\nLet's start" + "\nRound:" + (round + 1) +
-                "\n\nNote: If the round doesn't change it means you entered a wrong value, make sure you enter one of the 3 mentioned" +
                 "\nPress cancel to exit the game");
         } else {
             playerSelection =
-            window.prompt("Choose again!" + "\nRound:" + (round + 1) +
-                "\n\nNote: If the round doesn't change it means you entered a wrong value, make sure you enter one of the 3 mentioned" +
-                "\nPress cancel to exit the game");
+            window.prompt("Choose again!" + "\nRound:" + (round + 1) + "\nPress cancel to exit the game");
         }
         if (playerSelection===null){
             return roundNumber=4;   
